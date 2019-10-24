@@ -23,7 +23,6 @@ const CartScreen = props => {
     return transformCartItems.sort((a, b) =>
       a.productId > b.producrId ? 1 : -1,
     );
-    return;
   });
 
   const dispatch = useDispatch();
@@ -49,6 +48,7 @@ const CartScreen = props => {
             quantity={itemData.item.quantity}
             title={itemData.item.productTitle}
             amount={itemData.item.sum}
+            deletable
             onRemove={() => {
               dispatch(cartActions.removeFromCart(itemData.item.productId));
             }}

@@ -12,13 +12,15 @@ const CartItem = props => {
       </ItemData>
       <ItemData>
         <MainText>${props.amount.toFixed(2)}</MainText>
-        <Button onPress={props.onRemove}>
-          <Icon
-            name={Platform.OS === 'android' ? 'md-trash' : 'ios-trash'}
-            size={25}
-            color="red"
-          />
-        </Button>
+        {props.deletable && (
+          <Button onPress={props.onRemove}>
+            <Icon
+              name={Platform.OS === 'android' ? 'md-trash' : 'ios-trash'}
+              size={25}
+              color="red"
+            />
+          </Button>
+        )}
       </ItemData>
     </Container>
   );
@@ -42,7 +44,7 @@ const Quantity = styled.Text`
   font-family: OpenSans-Regular;
   color: #827e7e;
   font-size: 17px;
-  margin-right:10px
+  margin-right: 10px;
 `;
 
 const MainText = styled.Text`
