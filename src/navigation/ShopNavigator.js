@@ -31,6 +31,15 @@ const ProductsNavigator = createStackNavigator(
     Cart: CartScreen,
   },
   {
+    navigationOptions: {
+      drawerIcon: drawerConfig => (
+        <Icon
+          name={Platform.OS === 'android' ? 'md-cart' : 'ios-cart'}
+          size={25}
+          color={drawerConfig.tintColor}
+        />
+      ),
+    },
     defaultNavigationOptions: defaultNavOptions,
   },
 );
@@ -43,7 +52,7 @@ const OrdersNavigator = createStackNavigator(
     navigationOptions: {
       drawerIcon: drawerConfig => (
         <Icon
-          name={Platform.OS === 'android' ? 'md-cart' : 'ios-cart'}
+          name={Platform.OS === 'android' ? 'md-list' : 'ios-list'}
           size={25}
           color={drawerConfig.tintColor}
         />
