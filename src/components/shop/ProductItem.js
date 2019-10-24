@@ -77,7 +77,7 @@ const Details = styled.View`
 
 const Title = styled.Text`
   font-size: 18px;
-  margin-vertical: 2px;
+  margin-vertical: 1px;
   font-family: OpenSans-Bold;
 `;
 
