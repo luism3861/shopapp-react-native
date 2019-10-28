@@ -8,6 +8,8 @@ import HeaderButton from '../../components/UI/HeaderButton';
 import Colors from '../../constants/Colors';
 import * as productsActions from '../../store/actions/products';
 
+const Button = styled.Button``;
+
 const UserProductsScreen = ({navigation}) => {
   const userProducts = useSelector(state => state.products.userProducts);
   const dispatch = useDispatch();
@@ -86,7 +88,5 @@ UserProductsScreen.navigationOptions = navData => {
     ),
   };
 };
-
-const Button = styled.Button``;
 
 export default UserProductsScreen;

@@ -1,41 +1,9 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import CartItem from './CartItem';
-import {View, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import Colors from '../../constants/Colors';
 import Card from '../UI/Card';
-
-const OrderItem = props => {
-  const [showDetails, setShowDetails] = useState(false);
-  return (
-    <Card style={styles.orderItem}>
-      <Summary>
-        <Total>$ {props.amount.toFixed(2)}</Total>
-        <Date>{props.date}</Date>
-      </Summary>
-      <Button
-        color={Colors.primary}
-        title={showDetails ? 'Hide Details' : 'Show Details'}
-        onPress={() => {
-          setShowDetails(prevState => !prevState);
-        }}
-      />
-
-      {showDetails && (
-        <Container>
-          {props.items.map(cartItem => (
-            <CartItem
-              key={cartItem.productId}
-              quantity={cartItem.quantity}
-              amount={cartItem.sum}
-              title={cartItem.productTitle}
-            />
-          ))}
-        </Container>
-      )}
-    </Card>
-  );
-};
 
 const styles = StyleSheet.create({
   orderItem: {
@@ -69,5 +37,37 @@ const Date = styled.Text`
 `;
 
 const Button = styled.Button``;
+
+const OrderItem = props => {
+  const [showDetails, setShowDetails] = useState(false);
+  return (
+    <Card style={styles.orderItem}>
+      <Summary>
+        <Total>$ {props.amount.toFixed(2)}</Total>
+        <Date>{props.date}</Date>
+      </Summary>
+      <Button
+        color={Colors.primary}
+        title={showDetails ? 'Hide Details' : 'Show Details'}
+        onPress={() => {
+          setShowDetails(prevState => !prevState);
+        }}
+      />
+
+      {showDetails && (
+        <Container>
+          {props.items.map(cartItem => (
+            <CartItem
+              key={cartItem.productId}
+              quantity={cartItem.quantity}
+              amount={cartItem.sum}
+              title={cartItem.productTitle}
+            />
+          ))}
+        </Container>
+      )}
+    </Card>
+  );
+};
 
 export default OrderItem;

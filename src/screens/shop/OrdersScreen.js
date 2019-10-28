@@ -41,6 +41,4 @@ OrdersScreen.navigationOptions = navData => {
   };
 };
 
-const Text = styled.Text``;
-
 export default OrdersScreen;

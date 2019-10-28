@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, FlatList, StyleSheet, Button} from 'react-native';
+import {FlatList, StyleSheet, Button} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import Colors from '../../constants/Colors';
 import styled from 'styled-components';
@@ -7,6 +7,29 @@ import CartItem from '../../components/shop/CartItem';
 import * as cartActions from '../../store/actions/cart';
 import * as orderActions from '../../store/actions/orders';
 import Card from '../../components/UI/Card';
+
+const Screen = styled.View`
+  margin: 20px;
+`;
+
+const SummaryText = styled.Text`
+  font-family: OpenSans-Bold;
+  font-size: 18px;
+`;
+
+const Amount = styled.Text`
+  color: ${Colors.accent};
+`;
+
+const styles = StyleSheet.create({
+  summary: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    margin: 20,
+    padding: 10,
+  },
+});
 
 const CartScreen = props => {
   const cartTotalAmount = useSelector(state => state.cart.totalAmount);
@@ -66,28 +89,5 @@ const CartScreen = props => {
 CartScreen.navigationOptions = {
   headerTitle: 'Your Cart',
 };
-
-const Screen = styled.View`
-  margin: 20px;
-`;
-
-const SummaryText = styled.Text`
-  font-family: OpenSans-Bold;
-  font-size: 18px;
-`;
-
-const Amount = styled.Text`
-  color: ${Colors.accent};
-`;
-
-const styles = StyleSheet.create({
-  summary: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    margin: 20,
-    padding: 10,
-  },
-});
 
 export default CartScreen;
