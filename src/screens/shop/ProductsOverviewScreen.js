@@ -8,12 +8,12 @@ import HeaderButton from '../../components/UI/HeaderButton';
 import Colors from '../../constants/Colors';
 import styled from 'styled-components';
 
-const ProductsOverviewScreen = props => {
+const ProductsOverviewScreen = ({navigation}) => {
   const products = useSelector(state => state.products.availableProducts);
   const dispatch = useDispatch();
 
   const selectItemHandler = (id, title) => {
-    props.navigation.navigate('ProductDetail', {
+    navigation.navigate('ProductDetail', {
       productId: id,
       productTitle: title,
     });

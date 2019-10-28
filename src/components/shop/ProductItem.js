@@ -7,6 +7,7 @@ import {
   Platform,
 } from 'react-native';
 import styled from 'styled-components';
+import Card from '../UI/Card';
 
 const ProductItem = props => {
   let TouchableCmp = TouchableOpacity;
@@ -16,7 +17,7 @@ const ProductItem = props => {
   }
 
   return (
-    <View style={styles.product}>
+    <Card style={styles.product}>
       <Touchable>
         <TouchableCmp onPress={props.onSelect} useForeground>
           <Container>
@@ -31,19 +32,12 @@ const ProductItem = props => {
           </Container>
         </TouchableCmp>
       </Touchable>
-    </View>
+    </Card>
   );
 };
 
 const styles = StyleSheet.create({
   product: {
-    shadowColor: 'black',
-    shadowOpacity: 0.26,
-    shadowOffset: {width: 0, height: 2},
-    shadowRadius: 8,
-    elevation: 5,
-    borderRadius: 10,
-    backgroundColor: 'white',
     height: 300,
     margin: 20,
   },
@@ -71,13 +65,13 @@ const Image = styled.Image`
 
 const Details = styled.View`
   align-items: center;
-  height: 15%;
+  height: 17%;
   padding: 10px;
 `;
 
 const Title = styled.Text`
   font-size: 18px;
-  margin-vertical: 1px;
+  margin-vertical: 2px;
   font-family: OpenSans-Bold;
 `;
 
@@ -91,7 +85,7 @@ const Actions = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 25%;
+  height: 23%;
   padding-horizontal: 20px;
 `;
 
