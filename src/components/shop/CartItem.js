@@ -3,6 +3,29 @@ import {Platform} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import styled from 'styled-components';
 
+const CartItem = props => {
+  return (
+    <Container>
+      <ItemData>
+        <Quantity>{props.quantity}</Quantity>
+        <MainText>{props.title}</MainText>
+      </ItemData>
+      <ItemData>
+        <MainText>${props.amount.toFixed(2)}</MainText>
+        {props.deletable && (
+          <Button onPress={props.onRemove}>
+            <Icon
+              name={Platform.OS === 'android' ? 'md-trash' : 'ios-trash'}
+              size={28}
+              color="red"
+            />
+          </Button>
+        )}
+      </ItemData>
+    </Container>
+  );
+};
+
 const Container = styled.View`
   padding: 10px;
   background-color: white;
@@ -32,28 +55,5 @@ const MainText = styled.Text`
 const Button = styled.TouchableOpacity`
   margin-left: 20px;
 `;
-
-const CartItem = props => {
-  return (
-    <Container>
-      <ItemData>
-        <Quantity>{props.quantity}</Quantity>
-        <MainText>{props.title}</MainText>
-      </ItemData>
-      <ItemData>
-        <MainText>${props.amount.toFixed(2)}</MainText>
-        {props.deletable && (
-          <Button onPress={props.onRemove}>
-            <Icon
-              name={Platform.OS === 'android' ? 'md-trash' : 'ios-trash'}
-              size={25}
-              color="red"
-            />
-          </Button>
-        )}
-      </ItemData>
-    </Container>
-  );
-};
 
 export default CartItem;

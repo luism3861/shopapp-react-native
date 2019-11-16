@@ -1,13 +1,21 @@
 import React from 'react';
-import styled from 'styled-components';
 import {FlatList, Platform} from 'react-native';
 import {useSelector} from 'react-redux';
 import {HeaderButtons, Item} from 'react-navigation-header-buttons';
 import HeaderButton from '../../components/UI/HeaderButton';
 import OrderItem from '../../components/shop/OrderItem';
+import styled from 'styled-components';
 
 const OrdersScreen = props => {
   const orders = useSelector(state => state.orders.orders);
+
+  if (orders.length === 0) {
+    return (
+      <View>
+        <Text>You don't have any Orders</Text>
+      </View>
+    );
+  }
 
   return (
     <FlatList
@@ -40,5 +48,14 @@ OrdersScreen.navigationOptions = navData => {
     ),
   };
 };
+
+const View = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+const Text = styled.Text`
+  font-size: 20px;
+`;
 
 export default OrdersScreen;

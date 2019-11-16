@@ -11,8 +11,6 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-
-    
     case CREATE_PRODUCT:
       const newProduct = new Product(
         new Date().toString(),
@@ -27,8 +25,6 @@ export default (state = initialState, action) => {
         availableProducts: state.availableProducts.concat(newProduct),
         userProducts: state.userProducts.concat(newProduct),
       };
-
-
 
     case UPDATE_PRODUCT:
       const productIndex = state.userProducts.findIndex(
@@ -54,7 +50,6 @@ export default (state = initialState, action) => {
         availableProductsIndex: updatedAvailableProducts,
         userProducts: updatedUserProducts,
       };
-
 
     case DELETE_PRODUCT:
       return {
