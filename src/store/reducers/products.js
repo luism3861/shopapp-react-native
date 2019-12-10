@@ -47,7 +47,7 @@ export default (state = initialState, action) => {
       updatedAvailableProducts[availableProductsIndex] = updatedProduct;
       return {
         ...state,
-        availableProductsIndex: updatedAvailableProducts,
+        availableProducts: updatedAvailableProducts,
         userProducts: updatedUserProducts,
       };
 

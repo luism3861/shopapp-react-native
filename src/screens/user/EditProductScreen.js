@@ -120,13 +120,13 @@ const EditProductScreen = ({navigation}) => {
             required
           />
           <InputValue
-            id="imageUrl"
-            label="Image Url"
+            id="description"
+            label={editedProduct ? 'Description' : 'ImageUrl'}
             errorText="Please enter a valid image url!"
             keyboardType="default"
             returnKeyType="next"
             onInputChange={inputChangeHandler}
-            initialValue={editedProduct ? editedProduct.imageUrl : ''}
+            initialValue={editedProduct ? editedProduct.description : ''}
             initiallyValid={!!editedProduct}
             required
           />
@@ -144,21 +144,26 @@ const EditProductScreen = ({navigation}) => {
             />
           )}
           <InputValue
-            id="description"
-            label="Description"
+            id="imageUrl"
+            label={editedProduct ? 'Image Url' : 'Description'}
             errorText="Please enter a valid description!"
             keyboardType="default"
             autoCapitalize="sentences"
             autoCorrect
-            multiline
             numberOfLines={3}
             onInputChange={inputChangeHandler}
-            initialValue={editedProduct ? editedProduct.description : ''}
+            initialValue={editedProduct ? editedProduct.imageUrl : ''}
             initiallyValid={!!editedProduct}
             required
             minLength={5}
           />
         </Form>
+        <ButtonContainer>
+          <Button
+            title={editedProduct ? 'Update' : 'Submit'}
+            onPress={submitHandler}
+          />
+        </ButtonContainer>
       </Scroll>
     </KeyboardAvoidingView>
   );
@@ -183,6 +188,15 @@ EditProductScreen.navigationOptions = navData => {
     ),
   };
 };
+const Button = styled.Button``;
+
+const ButtonContainer = styled.View`
+  width: 50%;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-vertical: 20px;
+  align-self: center;
+`;
 
 const Scroll = styled.ScrollView``;
 
